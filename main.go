@@ -24,8 +24,13 @@ type Artists []struct {
 }
 
 func main(){
-
 	url:= 	"https://groupietrackers.herokuapp.com/api/artists"
+	artists:= Artists {}
+	FetchData(url,artists)
+	
+}
+
+func FetchData(url string,data Artists){
 	response, err :=http.Get(url)
 
 	if err != nil {
@@ -39,10 +44,8 @@ func main(){
 			log.Fatal(err)
 		}
 		//fmt.Println(string(body))
-		artists:= Artists {}
-		json.Unmarshal(body,&artists)
-		fmt.Printf("Data: %+v", artists)
+		json.Unmarshal(body,&data)
+		fmt.Printf("Data: %+v", data)
 	}
-	
 	
 }
