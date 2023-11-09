@@ -2,12 +2,61 @@
 <html>
     <head>
         <title> Groupie Tracker</title>
+        <style>
+        .container {
+            display: flex;
+            flex-flow: row wrap;
+            }
+        
+            .card {
+              width: 300px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              padding: 10px;
+              margin: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+        
+            .image {
+              width: 200px;
+              height: 200px;
+              background-color: #eee;
+              margin-bottom: 10px;
+            }
+        
+            .name {
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+        
+            .members {
+              margin-bottom: 5px;
+            }
+        
+            .creation-date {
+              margin-bottom: 5px;
+            }
+        
+            .first-album {
+              margin-bottom: 5px;
+            }
+        </style>
     </head>
 
-    <body>
-        
-
-
-    </body>
+       <body>
+          <div class="container">
+            {{range .}}
+            <div class="card">
+              <div class="image">{{.Image}}</div>
+              <div class="name">{{.Name}}</div>
+              <div class="members">Members: {{range .Members}}{{.}}, {{end}}</div>
+              <div class="creation-date">Creation Date: {{.CreationDate}}</div>
+              <div class="first-album">First Album: {{.FirstAlbum}}</div>
+            </div>
+            {{end}}
+          </div>
+        </body>
 
 </html>

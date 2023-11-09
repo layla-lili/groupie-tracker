@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"fmt"
 	"net/http"
+	"html/template"
 	"encoding/json"
 
 
@@ -22,15 +23,34 @@ type Artists []struct {
 	///ConcertDates string   `json:"concertDates"`
 	//Relations    string   `json:"relations"`
 }
-
-func main(){
-	url:= 	"https://groupietrackers.herokuapp.com/api/artists"
-	artists:= Artists {}
-	FetchData(url,artists)
-	
+var templates *template.Template
+func init() {
+	// Load templates
+	templates = template.Must(template.ParseFiles(
+		"index.html",
+		//"templates/404.html",
+		//"templates/400.html",
+		//"templates/500.html",
+	))
 }
 
-func FetchData(url string,data Artists){
+func main() {
+	http.HandleFunc("/", HomePageHandler)
+	http.ListenAndServe(":8080", nil)
+}
+
+func HomePageHandler(w http.ResponseWriter, r *http.Request) {
+	url := "https://groupietrackers.herokuapp.com/api/artists"
+	artists := Artists{}
+	fetchData(url, &artists)
+	err := templates.ExecuteTemplate(w, "index.html", artists)
+	if err != nil {
+		//http.Error(w, "Failed to render template", http.StatusInternalServerError)
+		return
+	}
+}
+
+func fetchData(url string,data *Artists){
 	response, err :=http.Get(url)
 
 	if err != nil {
