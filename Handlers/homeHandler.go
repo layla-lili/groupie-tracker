@@ -21,7 +21,7 @@ func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	fetchData(url, &artists)
 	err := templates.ExecuteTemplate(w, "index.html", artists)
 	if err != nil {
-		//http.Error(w, "Failed to render template", http.StatusInternalServerError)
+		http.Error(w, "Failed to render template", http.StatusInternalServerError)
 		return
 	}
 }
