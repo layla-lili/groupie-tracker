@@ -2,7 +2,6 @@ package Handlers
 
 import (
 	"net/http"
-	"html/template"
 )
 
 func BadRequestHandler(w http.ResponseWriter, r *http.Request) {
