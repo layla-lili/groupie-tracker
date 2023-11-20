@@ -3,10 +3,21 @@ package Handlers
 import (
 	"log"
 	"io/ioutil"
-	"fmt"
+	//"fmt"
 	"net/http"
 	"encoding/json"
 	)
+	type FullData struct {
+		ID           int      `json:"id"`
+		Image        string   `json:"image"`
+		Name         string   `json:"name"`
+		Members      []string `json:"members"`
+		CreationDate int      `json:"creationDate"`
+		FirstAlbum   string   `json:"firstAlbum"`
+		Locations []string `json:"locations"`
+		Dates     []string   `json:"dates"`
+		DatesLocations map[string][]string `json:"datesLocations"`
+	}
 
 type Artists []struct {
 	ID           int      `json:"id"`
@@ -15,31 +26,33 @@ type Artists []struct {
 	Members      []string `json:"members"`
 	CreationDate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
-	//Locations    string   `json:"locations"`
+	//Locations     interface{}    
 	///ConcertDates string   `json:"concertDates"`
 	//Relations    string   `json:"relations"`
 }
 
-func fetchData(url string,data *Artists){
-	response, err :=http.Get(url)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer response.Body.Close()
-
-	if response.StatusCode ==http.StatusOK {
-		body, err :=ioutil.ReadAll(response.Body)
-		if err != nil {
-			log.Fatal(err)
-		}
-		//fmt.Println(string(body))
-		json.Unmarshal(body,&data)
-		fmt.Printf("Data: %+v", data)
-	}
+type Locations struct {
+	Index []struct {
+		ID        int      `json:"id"`
+		Locations []string `json:"locations"`
+		//Dates     string   `json:"dates"`
+	} `json:"index"`
 }
 
-func fetch(url string){
+type Dates struct {
+	Index []struct {
+		ID        int      `json:"id"`
+		Dates     []string   `json:"dates"`
+	} `json:"index"`
+}
+
+type RelationsData struct {
+	Index []struct {
+		DatesLocations map[string][]string `json:"datesLocations"`
+	} `json:"index"`
+}
+
+func fetchData(url string,data interface{}){
 	response, err :=http.Get(url)
 
 	if err != nil {
@@ -52,6 +65,12 @@ func fetch(url string){
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(string(body))
+        // Unmarshal JSON data into the provided data interface
+        err = json.Unmarshal(body, &data)
+        if err != nil {
+            log.Fatal(err)
+        }
+		//fmt.Printf("Data: %+v\n", data)
+
 	}
 }
