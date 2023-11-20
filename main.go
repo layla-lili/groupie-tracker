@@ -14,7 +14,9 @@ func main() {
 	http.HandleFunc("/404", Handlers.NotFoundHandler)
 	// Handle Bad Request : 400
 	http.HandleFunc("/400", Handlers.BadRequestHandler)
+	// Handle Bad Request : 405
+	http.HandleFunc("/405", Handlers.MethodNotAllowedHandler)
 	// Handle Server error: 500
-	//http.HandleFunc("/500", Handlers.internalServerErrorHandler)
+	http.HandleFunc("/500", Handlers.InternalServerErrorHandler)
 	http.ListenAndServe(":8080", nil)
 }
