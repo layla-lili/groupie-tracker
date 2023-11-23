@@ -1,39 +1,79 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+  
+header {
+  background-image: url('Images/headerBG.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* Adjust the height as needed */
+  text-align: center;
+  color: #ffffff; /* Set the font color to ensure readability */
+  text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 0px #ffffff, 0 0 50px #ffffff, 0 0 0px #ffffff, 0 0 7px #ffffff, 0 0 1px #ffffff;
+  font-family: 'Rock Salt', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
 .container {
     display: flex;
     flex-flow: row wrap;
-    }
+    justify-content: center; 
+    margin: 0 auto; 
+    background-color:#1A1442;
+  }
 
-    .card {
-      width: 300px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+ .card {
+    background-image: url('Images/cardBG0.png');
+    width: 300px;
+    border: 3px solid #ccc;
+    border-radius: 60px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+  }
+  .Imagediv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
 
-    .image {
-      width: 200px;
-      height: 200px;
-      background-color: #eee;
-      margin-bottom: 10px;
-    }
+}
+  .image {
+    width: 200px;
+    height: 200px;
+    background-color: #eee;
+    margin-bottom: 10px;
+  }
 
-    .name {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+  .name {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size:25px;
+  }
 
-    .members {
-      margin-bottom: 5px;
-    }
+  .members {
+    margin-bottom: 5px;
+  }
 
-    .creation-date {
-      margin-bottom: 5px;
-    }
+  .creation-date {
+    margin-bottom: 5px;
+    font-size:20px;
 
-    .first-album {
-      margin-bottom: 5px;
-    }
+  }
+
+  .first-album {
+    margin-bottom: 15px;
+    font-size:20px;
+
+  }

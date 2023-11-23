@@ -38,6 +38,9 @@ func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	for i := range artists {
 		var tmpl FullData
 		tmpl.ID = artists[i].ID
+		if artists[i].Image =="https://groupietrackers.herokuapp.com/api/images/mamonasassassinas.jpeg"{
+			artists[i].Image="static/Images/ops.jpg"
+		}
 		tmpl.Image = artists[i].Image
 		tmpl.Name = artists[i].Name
 		tmpl.Members = artists[i].Members
