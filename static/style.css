@@ -1,7 +1,21 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modak&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Modak&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Dirt&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Dirt&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Dirt&family=Rubik+Pixels&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Dirt&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galindo&family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Dirt&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galindo&family=Lakki+Reddy&family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Dirt&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galindo&family=Lakki+Reddy&family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Galindo&family=Lakki+Reddy&family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Galindo&family=Lakki+Reddy&family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Microbe&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Galindo&family=Lakki+Reddy&family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Marker+Hatch&family=Rubik+Microbe&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
 
-  
 header {
   background-image: url('Images/headerBG.jpg');
   background-size: cover;
@@ -10,7 +24,7 @@ header {
   text-align: center;
   color: #ffffff; /* Set the font color to ensure readability */
   text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 0px #ffffff, 0 0 50px #ffffff, 0 0 0px #ffffff, 0 0 7px #ffffff, 0 0 1px #ffffff;
-  font-family: 'Rock Salt', cursive;
+  font-family: 'Carter One', cursive;
   display: flex;
   justify-content: center;
   align-items: center;
