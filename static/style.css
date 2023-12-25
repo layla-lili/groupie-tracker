@@ -22,7 +22,7 @@ header {
   background-position: center;
   height: 400px; /* Adjust the height as needed */
   text-align: center;
-  color: #ffffff; /* Set the font color to ensure readability */
+  color: #d7be5b; /* Set the font color to ensure readability */
   text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 0px #ffffff, 0 0 50px #ffffff, 0 0 0px #ffffff, 0 0 7px #ffffff, 0 0 1px #ffffff;
   font-family: 'Carter One', cursive;
   display: flex;
@@ -36,7 +36,7 @@ header {
     flex-flow: row wrap;
     justify-content: center; 
     margin: 0 auto; 
-    background-color:#1A1442;
+    background-color:#312F2A;
   }
 
  .card {
