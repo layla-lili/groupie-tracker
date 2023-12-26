@@ -17,7 +17,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Galindo&family=Lakki+Reddy&family=Major+Mono+Display&family=Modak&family=Moirai+One&family=Nosifer&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;1,100&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Marker+Hatch&family=Rubik+Microbe&family=Rubik+Pixels&family=Trade+Winds&family=Wavefont:wght@100&display=swap');
 
 header {
-  background-image: linear-gradient(to bottom, rgba(48,50,43,0), rgb(48, 50, 43)), url('Images/headerBG.jpg');
+  background-image: linear-gradient(to bottom, rgba(48,50,43,0), rgb(48, 50, 43,7)), url('Images/headerBG.jpg');
   background-size: cover;
   background-position: center;
   height: 400px; /* Adjust the height as needed */
@@ -31,6 +31,8 @@ header {
   font-size: 30px;
  
 }
+
+
 
 .container {
     display: flex;
@@ -84,15 +86,16 @@ header {
   .creation-date {
     margin-bottom: 5px;
     font-size:20px;
-    color:#cfcfcf;
+    color:#020000;
 
   }
 
   .first-album {
     margin-bottom: 15px;
     font-size:20px;
-    color:#cfcfcf;
-
+ 
+    color:#010000;
+ 
   }
   /* .more{
     background-color: beige;
@@ -108,6 +111,7 @@ header {
   background: #404040;
   color: #ffffff;
   font-weight: 100;
+  font-size:small;
   padding: 20px;
   text-transform: uppercase;
   border-radius: 6px;
@@ -117,10 +121,12 @@ header {
 }
 
 .more:hover {
-  color: #eee5e5;
+  color: #d97b7b;
   font-weight: 700;
+  font-size: medium;
   letter-spacing: 3px;
   background: none;
+  cursor: pointer;
   /* -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57); */
   transition: all 0.3s ease 0s;
@@ -141,7 +147,7 @@ header {
 }
 
 .music-card {
-  margin: 100px auto;
+  margin: 80px auto;
   /* background: #fff; */
   background-image:url('Images/headerBG.jpg');
   
@@ -153,8 +159,8 @@ header {
   border-radius: 6px;
   display:  flex;
   justify-content: center;
-
 }
+
 
 .image {
   /* background: url('http://static1.squarespace.com/static/530b728de4b04fc9b23a5988/t/569880381a5203aa7d44c1a8/1452834873397/00.jpg?format=1000w') no-repeat 75%; */
@@ -224,12 +230,20 @@ header {
 }
 
 .info {
+
   position: absolute;
   bottom: 20px;
   left: 0;
   right: 0;
   text-align: center;
+  background-color: peachpuff;
+  opacity: 0.7;
+  padding: 20px 0 20px 0 ;
+ 
+  width: 100%;
+  
 }
+
 
 .title {
   font-size: 1.4em;
@@ -241,8 +255,8 @@ header {
 }
 
 .artist {
-  color: #cfcfcf;
-  font-size: 1.2em;
+  color: #080000;
+  font-size: 1.5em;
   letter-spacing: 0.08em;
   font-family: 'Reem Kufi', sans-serif;
   margin-top: -10px;
@@ -277,3 +291,5 @@ header {
     margin-top: 35px;
 
 }
+
+/* Reset */
