@@ -33,15 +33,6 @@ header {
 }
 
 
-
-.container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center; 
-    margin: 0 auto; 
-    background-color:#30322B;
-  }
-
  .card {
     background-image: url('Images/cardBG0.png');
     width: 300px;
@@ -70,6 +61,7 @@ header {
     height: 200px;
     background-color: #eee;
     margin-bottom: 10px;
+ 
   }
 
   .name {
@@ -97,15 +89,7 @@ header {
     color:#010000;
  
   }
-  /* .more{
-    background-color: beige;
-    width: 100%;
-    padding: 30px;
-    border-radius: 60px 0 60px 0;
-  }
-.more:hover{
-  background-color: wheat;
-} */
+
 .more {
   border: none;
   background: #404040;
@@ -245,14 +229,14 @@ header {
 }
 
 
-.title {
-  font-size: 1.4em;
+/* .title {
+  font-size: 1.5em;
   font-weight: 400;
   color: #333;
   margin-bottom: 8px;
   text-transform: uppercase;
   font-family: 'Reem Kufi', sans-serif;
-}
+} */
 
 .artist {
   color: #080000;
@@ -302,18 +286,18 @@ header {
 }
 
 body{
-  background-color: black;
+  background-color: #30322B;
 }
 
 .container{
-  /* margin:100px auto; */
-  /* width:809px; */
-
+   /* margin:100px auto; 
+   width:809px;  */
   display: flex;
   flex-flow: row wrap;
   justify-content: center; 
   margin: 0 auto; 
   background-color:#30322B;
+  margin-bottom: 50px;
 }
 
 .light{
@@ -324,7 +308,9 @@ body{
 }
 
 .calendar{
-  width:370px;
+  width:700px;
+
+  flex-direction: row;
   box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
   font-family: 'Roboto', sans-serif;
   padding: 20px 30px;
@@ -375,16 +361,19 @@ body{
   color:--light_grey;
 }
 .ce_title{
-  font-size:14px;
+  color:--light_grey;
+  font-size:20px;
 }
 
-.event_item{
-  margin: 18px 0;
+
+.event_item div{
+  margin: 10px 0;
   padding:5px;
   cursor: pointer;
   &:hover{
     background-image: linear-gradient(-222deg, #FF8494, #ffa9b7);
     box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
+    width: 90%;
     .ei_Dot{
       background-color: #fff;
     }
@@ -392,6 +381,20 @@ body{
       color:#fff;
     }
   }
+}
+.event .icon {
+  margin-right: 8px; /* Adjust the spacing as needed */
+}
+
+.event_item, ul {
+  list-style: none; /* Remove the default list dot */
+  padding-left: 0; /* Remove the default padding */
+  
+}
+
+.event_item, li {
+  padding-left: 20px; /* Add padding to simulate the removed dot */
+
 }
 
 .ei_Dot,.ei_Title{
@@ -412,19 +415,14 @@ body{
 .ei_Title{
   margin-left:10px;
   color:#363b41;
+  font-weight: bolder;
 }
 
 .ei_Copy{
-  font-size:12px;
-  margin-left:27px;
+  font-size:15px;
+  margin-left:100px;
+  font-weight: lighter;
 }
 
-.dark{
-  background-image: linear-gradient(-222deg, #646464, #454545);
-  color:#fff;
-  .header_title,.ei_Title,.ce_title{
-    color:#fff;
-  }
-  
-}
+
 
