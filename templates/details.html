@@ -11,27 +11,36 @@
 </head>
 
 <body>
-    <header
-        style="background-image: linear-gradient(to bottom, rgba(48,50,43,0), rgb(48, 50, 43,7)), url('{{.Image}}'); background-size: contain;">
-
-    </header>
+    <!-- <header>
+       
+        <img class="Image" src="{{ .Image }}" alt="Image">
+    </header> -->
 
     <div class="container">
         <div class="container">
+          
             <div class="calendar light">
+                <div class="leftCard">
                 <div class="calendar_header">
-
+                 
+                    <div class="ImagedivPlayer">
+                        <img class="Image" src="{{ .Image }}" alt="Image">
+                    </div>
+                   
+                    
                     <h1 class="header_title">{{.Name}}</h1>
-                    <p class="header_copy"> Calendar Plan</p>
+                    <!-- <p class="header_copy"> Calendar Plan</p> -->
                 </div>
                 <div class="calendar_plan">
                     <div class="cl_plan">
-                        <div class="cl_title"> Creation Date: {{.CreationDate}}
+                        <div class="cl_copy"> Creation Date: {{.CreationDate}}
                         </div>
-                        <div class="cl_copy">First Album: {{.FirstAlbum}}
+                        <br>
+                        <div class="cl_title">First Album: {{.FirstAlbum}}
                         </div>
                     </div>
                 </div>
+            </div>
                 <div class="calendar_events">
                     <p class="ce_title">Concert</p>
 

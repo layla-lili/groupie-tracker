@@ -22,14 +22,14 @@ header {
   background-position: center;
   height: 400px; /* Adjust the height as needed */
   text-align: center;
-  color: #d7be5b; /* Set the font color to ensure readability */
+  color: #D6A4AB; /* Set the font color to ensure readability */
   text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 5px #fff, 0 0 0px #ffffff, 0 0 50px #ffffff, 0 0 0px #ffffff, 0 0 7px #ffffff, 0 0 1px #ffffff;
   font-family: 'Carter One', cursive;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
- 
+
 }
 
 
@@ -94,7 +94,7 @@ header {
   border: none;
   background: #404040;
   color: #ffffff;
-  font-weight: 100;
+  font-weight: bolder;
   font-size:small;
   padding: 20px;
   text-transform: uppercase;
@@ -105,9 +105,9 @@ header {
 }
 
 .more:hover {
-  color: #d97b7b;
-  font-weight: 700;
-  font-size: medium;
+  color: #0a0a0a;
+  font-weight: bolder;
+  font-size: smaller;
   letter-spacing: 3px;
   background: none;
   cursor: pointer;
@@ -131,11 +131,11 @@ header {
 }
 
 .music-card {
-  margin: 80px auto;
+  margin: 27px;
   /* background: #fff; */
   background-image:url('Images/headerBG.jpg');
   
-  box-shadow: 0px 8px 28px -9px rgba(0,0,0,0.45);
+  box-shadow: 0px 8px 28px -9px rgba(233, 204, 148, 0.45);
   overflow: hidden;
   position: relative;
   width: 300px;
@@ -220,11 +220,14 @@ header {
   left: 0;
   right: 0;
   text-align: center;
-  background-color: peachpuff;
+  background-color: rgb(255, 255, 255);
   opacity: 0.7;
   padding: 20px 0 20px 0 ;
- 
   width: 100%;
+  height:230px;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
   
 }
 
@@ -309,13 +312,15 @@ body{
 
 .calendar{
   width:700px;
-
+  display: flex;
   flex-direction: row;
   box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
   font-family: 'Roboto', sans-serif;
   padding: 20px 30px;
   color:#363b41;
-  display: inline-block;
+  margin-top: 50px;
+  border-radius: 50px;
+
 }
 
 .calendar_header{
@@ -336,14 +341,19 @@ body{
   box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
   padding:30px;
   color:#fff;
+  border-radius: 10px;
 }
 .cl_title{
-  
+  font-size:20px;
+  margin: 9px 0;
+  display: inline-block;
+  font-weight: bolder;
 }
 .cl_copy{
   font-size:20px;
-  margin: 20px 0;
+  margin: 9px 0;
   display: inline-block;
+  font-weight: bold;
 }
 
 .cl_add{
@@ -359,10 +369,13 @@ body{
 }
 .calendar_events{
   color:--light_grey;
+  margin-left: 30px;
+  border-left: 2px solid rgba(0, 0, 0, 0.08);
 }
 .ce_title{
   color:--light_grey;
   font-size:20px;
+  margin-left: 30px;
 }
 
 
@@ -424,5 +437,31 @@ body{
   font-weight: lighter;
 }
 
+.detailsImage{
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.7;
+  padding: 20px 0 20px 0 ;
+  width: 100%;
+  height:230px;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
 
 
+.header_title{
+  display: flex;
+  justify-content: center;
+}
+.leftCard{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
