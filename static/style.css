@@ -135,7 +135,7 @@ header {
   /* background: #fff; */
   background-image:url('Images/headerBG.jpg');
   
-  box-shadow: 0px 8px 28px -9px rgba(233, 204, 148, 0.45);
+  box-shadow: 0px 8px 30px -7px rgba(218, 185, 204, 0.45);
   overflow: hidden;
   position: relative;
   width: 300px;
