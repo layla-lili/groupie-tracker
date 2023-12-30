@@ -12,7 +12,7 @@ func detailspageHandler(w http.ResponseWriter, r *http.Request, artists []FullDa
 // Get the selected ID from the form data
 idStr := r.FormValue("id")
 id, err := strconv.Atoi(idStr)
-if err != nil {
+if err != nil || (id<1 || id>52){
 	// Handle the error
 	http.Error(w, "Invalid ID", http.StatusBadRequest)
 	return

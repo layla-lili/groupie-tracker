@@ -19,6 +19,9 @@ func init() {
 		"templates/500.html",
 		"templates/details.html",
 	))
+
+
+
 // Register the /details route handler
 http.HandleFunc("/details", func(w http.ResponseWriter, r *http.Request) {
 	detailspageHandler(w, r, ArtistsFull)
@@ -26,6 +29,7 @@ http.HandleFunc("/details", func(w http.ResponseWriter, r *http.Request) {
 
 
 }
+
 
 func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	//https://mholt.github.io/json-to-go/
@@ -63,9 +67,15 @@ func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 		ArtistsFull = append(ArtistsFull, tmpl)
 	}
 
+if r.URL.Path == "/" {
+
 err := templates.ExecuteTemplate(w, "index.html", ArtistsFull)
 if err != nil {
 	http.Error(w, "Failed to render template", http.StatusInternalServerError)
+	return
+}
+}else{
+	NotFoundHandler(w,r)
 	return
 }
 
