@@ -46,22 +46,18 @@
                         <p class="ce_title">Members:</p>
                     
                         <div class="members">
-                            <ui>
-                            {{range $key, $value := .Members}}
-                           
-                                <div class="ei_Dot"></div>
-                              
-                                <div class="ei_Title">
-                                   <span>🌟	{{$value}}</span>
-                    
-                                    <!-- <div class="ei_Copy">
-                                        <i>🎤</i> {{$value}}
-                                    </div> -->
-                                </div>
-                           
-                            {{end}}
-                        </ui>
+                            <ul>
+                                {{range $key, $value := .Members}}
+                                <li>
+                                    <div class="ei_Dot"></div>
+                                    <div class="ei_Title">
+                                        <span>🌟 {{$value}}</span>
+                                    </div>
+                                </li>
+                                {{end}}
+                            </ul>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="calendar_events">
