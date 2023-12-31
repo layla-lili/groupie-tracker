@@ -20,6 +20,5 @@ func main() {
 	// Handle Server error: 500
 	http.HandleFunc("/500", Handlers.InternalServerErrorHandler)
 
-	
 	http.ListenAndServe(":8080", nil)
 }

@@ -8,7 +8,7 @@ import (
 
 
 
-func detailspageHandler(w http.ResponseWriter, r *http.Request, artists []FullData) {
+func DetailspageHandler(w http.ResponseWriter, r *http.Request, artists []FullData) {
 // Get the selected ID from the form data
 idStr := r.FormValue("id")
 id, err := strconv.Atoi(idStr)

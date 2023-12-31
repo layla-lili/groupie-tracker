@@ -377,6 +377,8 @@ body{
   font-size:20px;
   margin-left: 30px;
   font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 
@@ -387,7 +389,7 @@ body{
   &:hover{
     background-image: linear-gradient(-222deg, #FF8494, #ffa9b7);
     box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
-    width: 90%;
+    width: 100%;
     .ei_Dot{
       background-color: #fff;
     }
@@ -465,4 +467,18 @@ body{
   flex-direction: column;
   justify-content: start;
   align-items: center;
+}
+
+.members div{
+  margin-left: 16px ;
+  padding:5px;
+  cursor: pointer;
+   display: flex;
+   flex-direction: column;
+
+
+}
+.members_card{
+  color:--light_grey;
+  margin-left: 10px;
 }

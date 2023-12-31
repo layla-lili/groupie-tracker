@@ -24,7 +24,7 @@ func init() {
 
 // Register the /details route handler
 http.HandleFunc("/details", func(w http.ResponseWriter, r *http.Request) {
-	detailspageHandler(w, r, ArtistsFull)
+	DetailspageHandler(w, r, ArtistsFull)
 })
 
 
@@ -43,10 +43,10 @@ func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	dates := Dates{}
 	Relation := RelationsData{}
 
-	fetchData(urlArtists, &artists)
-	fetchData(urlLocations, &locations)
-	fetchData(urlDates, &dates)
-	fetchData(urlRelation, &Relation)
+	fetchData(urlArtists, &artists, w, r)
+	fetchData(urlLocations, &locations,w, r)
+	fetchData(urlDates, &dates, w, r)
+	fetchData(urlRelation, &Relation, w, r)
 
 	ArtistsFull = nil // Clear ArtistsFull before populating it again
 
@@ -58,7 +58,12 @@ func HomePageHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		tmpl.Image = artists[i].Image
 		tmpl.Name = artists[i].Name
-		tmpl.Members = artists[i].Members
+		tmpl.Members = make(map[string]string)
+         for _, member := range artists[i].Members {
+         // Set the member name as both the key and value in the map
+         tmpl.Members[member] = member
+           }
+
 		tmpl.CreationDate = artists[i].CreationDate
 		tmpl.FirstAlbum = artists[i].FirstAlbum
 		tmpl.Locations = locations.Index[i].Locations
