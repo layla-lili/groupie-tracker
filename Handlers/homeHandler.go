@@ -38,10 +38,5 @@ if err != nil {
 	NotFoundHandler(w,r)
 	return
 }
-
-
-
 	// fmt.Printf("Data: %+v\n", ArtistsFull)
-	
-
 }

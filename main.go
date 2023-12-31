@@ -3,6 +3,7 @@ package main
 import (
 	"groupie/Handlers"
 	"net/http"
+	"sync"
 )
 
 const (
@@ -15,16 +16,44 @@ const (
 var ArtistsFull = make([]Handlers.FullData, 0, len(Handlers.Artists{}))
 
 func main() {
-
 	artists := Handlers.Artists{}
 	locations := Handlers.Locations{}
 	dates := Handlers.Dates{}
 	Relation := Handlers.RelationsData{}
 
-	Handlers.FetchData(urlArtists, &artists)
-	Handlers.FetchData(urlLocations, &locations)
-	Handlers.FetchData(urlDates, &dates)
-	Handlers.FetchData(urlRelation, &Relation)
+	// Handlers.FetchData(urlArtists, &artists)
+	// Handlers.FetchData(urlLocations, &locations)
+	// Handlers.FetchData(urlDates, &dates)
+	// Handlers.FetchData(urlRelation, &Relation)
+
+	var wg sync.WaitGroup
+	wg.Add(4)
+
+	// Fetch data from APIs concurrently using goroutines
+	go func() {
+		defer wg.Done()
+		Handlers.FetchData(urlArtists, &artists)
+	}()
+
+	go func() {
+		defer wg.Done()
+		Handlers.FetchData(urlLocations, &locations)
+	}()
+
+	go func() {
+		defer wg.Done()
+		Handlers.FetchData(urlDates, &dates)
+	}()
+
+	go func() {
+		defer wg.Done()
+		Handlers.FetchData(urlRelation, &Relation)
+	}()
+
+	// Wait for all goroutines to complete
+	wg.Wait()
+
+
 
 	for i, artist := range artists {
 
@@ -44,11 +73,9 @@ func main() {
 			// Set the member name as both the key and value in the map
 			tmpl.Members[member] = member
 		}
-
 		if tmpl.Image == "https://groupietrackers.herokuapp.com/api/images/mamonasassassinas.jpeg" {
 			artist.Image = "static/Images/ops.jpg"
 		}
-
 		ArtistsFull = append(ArtistsFull, tmpl)
 	}
 
