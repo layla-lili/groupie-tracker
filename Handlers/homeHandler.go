@@ -17,11 +17,6 @@ func init() {
 		"templates/500.html",
 		"templates/details.html",
 	))
-
-
-
-
-
 }
 
 

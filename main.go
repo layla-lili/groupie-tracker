@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	urlArtists   = "https://groupietrackers.herokuapp.com/api/artist"
+	urlArtists   = "https://groupietrackers.herokuapp.com/api/artists"
 	urlLocations = "https://groupietrackers.herokuapp.com/api/locations"
 	urlDates     = "https://groupietrackers.herokuapp.com/api/dates"
 	urlRelation  = "https://groupietrackers.herokuapp.com/api/relation"
@@ -85,11 +85,19 @@ func main() {
 
 	// Register the handlers
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if len(ArtistsFull)>0{
 		Handlers.HomePageHandler(w, r, ArtistsFull)
+		}else{
+			Handlers.InternalServerErrorHandler(w,r)
+		}
 	})
 
 	http.HandleFunc("/details", func(w http.ResponseWriter, r *http.Request) {
-		Handlers.DetailspageHandler(w, r, ArtistsFull)
+		if len(ArtistsFull)>0{
+			Handlers.DetailspageHandler(w, r, ArtistsFull)
+			}else{
+				Handlers.InternalServerErrorHandler(w,r)
+			}
 	})
 
 	http.HandleFunc("/404", Handlers.NotFoundHandler)
