@@ -1,13 +1,14 @@
 package main
 
 import (
-	"groupie/Handlers"
 	"net/http"
 	"sync"
+
+	"groupie/Handlers"
 )
 
 const (
-	urlArtists   = "https://groupietrackers.herokuapp.com/api/artists"
+	urlArtists   = "https://groupietrackers.herokuapp.com/api/artist"
 	urlLocations = "https://groupietrackers.herokuapp.com/api/locations"
 	urlDates     = "https://groupietrackers.herokuapp.com/api/dates"
 	urlRelation  = "https://groupietrackers.herokuapp.com/api/relation"
@@ -53,9 +54,7 @@ func main() {
 	// Wait for all goroutines to complete
 	wg.Wait()
 
-
-
-	for i, artist := range artists {
+	for i := range artists {
 
 		tmpl := Handlers.FullData{
 			ID:      artists[i].ID,
@@ -73,8 +72,9 @@ func main() {
 			// Set the member name as both the key and value in the map
 			tmpl.Members[member] = member
 		}
+
 		if tmpl.Image == "https://groupietrackers.herokuapp.com/api/images/mamonasassassinas.jpeg" {
-			artist.Image = "static/Images/ops.jpg"
+			tmpl.Image = "static/Images/ops.jpg"
 		}
 		ArtistsFull = append(ArtistsFull, tmpl)
 	}
