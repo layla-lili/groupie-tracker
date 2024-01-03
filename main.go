@@ -1,21 +1,20 @@
 package main
 
 import (
+	"groupie/Handlers"
 	"net/http"
 	"sync"
-
-	"groupie/Handlers"
 )
 
 const (
-	urlArtists   = "https://groupietrackers.herokuapp.com/api/artists"
+	urlArtists   = "https://groupietrackers.herokuapp.com/api/artist"
 	urlLocations = "https://groupietrackers.herokuapp.com/api/locations"
 	urlDates     = "https://groupietrackers.herokuapp.com/api/dates"
 	urlRelation  = "https://groupietrackers.herokuapp.com/api/relation"
 )
 
 var ArtistsFull = make([]Handlers.FullData, 0, len(Handlers.Artists{}))
-
+var fetched = true
 func main() {
 	artists := Handlers.Artists{}
 	locations := Handlers.Locations{}
@@ -33,51 +32,37 @@ func main() {
 	// Fetch data from APIs concurrently using goroutines
 	go func() {
 		defer wg.Done()
-		Handlers.FetchData(urlArtists, &artists)
+		if Handlers.FetchData(urlArtists, &artists) != nil{
+			fetched=false
+		}
 	}()
 
 	go func() {
 		defer wg.Done()
-		Handlers.FetchData(urlLocations, &locations)
+		if Handlers.FetchData(urlLocations, &locations)  != nil{
+			fetched=false
+		}
 	}()
 
 	go func() {
 		defer wg.Done()
-		Handlers.FetchData(urlDates, &dates)
+		if Handlers.FetchData(urlDates, &dates)  != nil{
+			fetched=false
+		}
 	}()
 
 	go func() {
 		defer wg.Done()
-		Handlers.FetchData(urlRelation, &Relation)
+		if Handlers.FetchData(urlRelation, &Relation)  != nil{
+			fetched=false
+		}
 	}()
 
 	// Wait for all goroutines to complete
 	wg.Wait()
 
-	for i := range artists {
+	
 
-		tmpl := Handlers.FullData{
-			ID:      artists[i].ID,
-			Image:   artists[i].Image,
-			Name:    artists[i].Name,
-			Members: make(map[string]string),
-
-			CreationDate:   artists[i].CreationDate,
-			FirstAlbum:     artists[i].FirstAlbum,
-			Locations:      locations.Index[i].Locations,
-			Dates:          dates.Index[i].Dates,
-			DatesLocations: Relation.Index[i].DatesLocations,
-		}
-		for _, member := range artists[i].Members {
-			// Set the member name as both the key and value in the map
-			tmpl.Members[member] = member
-		}
-
-		if tmpl.Image == "https://groupietrackers.herokuapp.com/api/images/mamonasassassinas.jpeg" {
-			tmpl.Image = "static/Images/ops.jpg"
-		}
-		ArtistsFull = append(ArtistsFull, tmpl)
-	}
 
 	staticDir := http.Dir("static")
 	fs := http.FileServer(staticDir)
@@ -85,7 +70,32 @@ func main() {
 
 	// Register the handlers
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if len(ArtistsFull)>0{
+		if fetched{
+		for i := range artists {
+
+			tmpl := Handlers.FullData{
+				ID:      artists[i].ID,
+				Image:   artists[i].Image,
+				Name:    artists[i].Name,
+				Members: make(map[string]string),
+	
+				CreationDate:   artists[i].CreationDate,
+				FirstAlbum:     artists[i].FirstAlbum,
+				Locations:      locations.Index[i].Locations,
+				Dates:          dates.Index[i].Dates,
+				DatesLocations: Relation.Index[i].DatesLocations,
+			}
+			for _, member := range artists[i].Members {
+				// Set the member name as both the key and value in the map
+				tmpl.Members[member] = member
+			}
+	
+			if tmpl.Image == "https://groupietrackers.herokuapp.com/api/images/mamonasassassinas.jpeg" {
+				tmpl.Image = "static/Images/ops.jpg"
+			}
+			ArtistsFull = append(ArtistsFull, tmpl)
+		}
+		
 		Handlers.HomePageHandler(w, r, ArtistsFull)
 		}else{
 			Handlers.InternalServerErrorHandler(w,r)
@@ -93,7 +103,32 @@ func main() {
 	})
 
 	http.HandleFunc("/details", func(w http.ResponseWriter, r *http.Request) {
-		if len(ArtistsFull)>0{
+			if fetched{
+				for i := range artists {
+		
+					tmpl := Handlers.FullData{
+						ID:      artists[i].ID,
+						Image:   artists[i].Image,
+						Name:    artists[i].Name,
+						Members: make(map[string]string),
+			
+						CreationDate:   artists[i].CreationDate,
+						FirstAlbum:     artists[i].FirstAlbum,
+						Locations:      locations.Index[i].Locations,
+						Dates:          dates.Index[i].Dates,
+						DatesLocations: Relation.Index[i].DatesLocations,
+					}
+					for _, member := range artists[i].Members {
+						// Set the member name as both the key and value in the map
+						tmpl.Members[member] = member
+					}
+			
+					if tmpl.Image == "https://groupietrackers.herokuapp.com/api/images/mamonasassassinas.jpeg" {
+						tmpl.Image = "static/Images/ops.jpg"
+					}
+					ArtistsFull = append(ArtistsFull, tmpl)
+				}
+				
 			Handlers.DetailspageHandler(w, r, ArtistsFull)
 			}else{
 				Handlers.InternalServerErrorHandler(w,r)
