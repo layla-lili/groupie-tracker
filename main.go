@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	urlArtists   = "https://groupietrackers.herokuapp.com/api/artist"
+	urlArtists   = "https://groupietrackers.herokuapp.com/api/artists"
 	urlLocations = "https://groupietrackers.herokuapp.com/api/locations"
 	urlDates     = "https://groupietrackers.herokuapp.com/api/dates"
 	urlRelation  = "https://groupietrackers.herokuapp.com/api/relation"
