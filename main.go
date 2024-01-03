@@ -2,8 +2,13 @@ package main
 
 import (
 	"groupie/Handlers"
+	"log"
 	"net/http"
+	"os"
+	"os/exec"
+	"runtime"
 	"sync"
+	"time"
 )
 
 const (
@@ -27,39 +32,76 @@ func main() {
 	// Handlers.FetchData(urlRelation, &Relation)
 
 	var wg sync.WaitGroup
+	// Create a channel to receive a signal when all goroutines are done
+	done := make(chan bool)
+
 	wg.Add(4)
 
 	// Fetch data from APIs concurrently using goroutines
 	go func() {
 		defer wg.Done()
+		startTime := time.Now()
+
 		if Handlers.FetchData(urlArtists, &artists) != nil{
 			fetched=false
 		}
+		duration := time.Since(startTime)
+		log.Println("Goroutine 1 completed in", duration)
+
 	}()
 
 	go func() {
 		defer wg.Done()
+		startTime := time.Now()
+
 		if Handlers.FetchData(urlLocations, &locations)  != nil{
 			fetched=false
 		}
+
+		duration := time.Since(startTime)
+		log.Println("Goroutine 2 completed in", duration)
+
 	}()
 
 	go func() {
 		defer wg.Done()
+		startTime := time.Now()
+
 		if Handlers.FetchData(urlDates, &dates)  != nil{
 			fetched=false
 		}
+		duration := time.Since(startTime)
+		log.Println("Goroutine 3 completed in", duration)
+
 	}()
 
 	go func() {
 		defer wg.Done()
+		startTime := time.Now()
 		if Handlers.FetchData(urlRelation, &Relation)  != nil{
 			fetched=false
 		}
-	}()
+		duration := time.Since(startTime)
+		log.Println("Goroutine 4 completed in", duration)
 
-	// Wait for all goroutines to complete
+	}()
+	
+// Start a timer to wait for a certain duration before signaling the completion
+go func() {
+	// Wait for 5 seconds
+	time.Sleep(5 * time.Second)
+	done <- true
+}()
+
+// Wait for all goroutines to complete or the timer to expire
+go func() {
 	wg.Wait()
+	done <- true
+}()
+
+// Wait for the completion signal
+<-done
+
 
 	
 
@@ -140,6 +182,34 @@ func main() {
 	http.HandleFunc("/405", Handlers.MethodNotAllowedHandler)
 	http.HandleFunc("/500", Handlers.InternalServerErrorHandler)
 
-	// Start the server
-	http.ListenAndServe(":8080", nil)
+// Start the server
+log.Println("Server listening on port 8080")
+err := http.ListenAndServe(":8080", nil)
+if err != nil {
+	log.Fatal("Server error:", err)
+}
+
+// Open the server URL in the default browser
+openBrowser("http://localhost:8080")
+
+	
+}
+// openBrowser opens the specified URL in the default browser of the user's operating system
+func openBrowser(url string) {
+	var err error
+
+	switch runtime.GOOS {
+	case "darwin":
+		err = exec.Command("open", url).Start()
+	case "windows":
+		err = exec.Command("cmd", "/c", "start", url).Start()
+	case "linux":
+		err = exec.Command("xdg-open", url).Start()
+	default:
+		err = os.ErrInvalid
+	}
+
+	if err != nil {
+		log.Println("Failed to open browser:", err)
+	}
 }
