@@ -11,6 +11,7 @@ import (
 	"time"
 )
 
+
 const (
 	urlArtists   = "https://groupietrackers.herokuapp.com/api/artists"
 	urlLocations = "https://groupietrackers.herokuapp.com/api/locations"

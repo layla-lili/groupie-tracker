@@ -25,12 +25,14 @@ func MethodNotAllowedHandler(w http.ResponseWriter, r *http.Request) {
 	err := templates.ExecuteTemplate(w, "405.html", nil)
 	if err != nil {
 		InternalServerErrorHandler(w, r)
-		return
 	}
 }
 func InternalServerErrorHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusInternalServerError)
-	templates.ExecuteTemplate(w, "500.html", nil)
+	err := templates.ExecuteTemplate(w, "500.html", nil)
+	if err != nil {
+	http.Error(w, "Failed to render template", http.StatusInternalServerError)
+}
 }
 
 

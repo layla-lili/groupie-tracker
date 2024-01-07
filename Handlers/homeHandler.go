@@ -9,7 +9,8 @@ import (
 var templates *template.Template
 func init() {
 	// Load templates
-	templates = template.Must(template.ParseFiles(
+	templates = template.Must(
+		template.ParseFiles(
 		"templates/index.html",
 		"templates/404.html",
 		"templates/400.html",
@@ -26,12 +27,10 @@ if r.URL.Path == "/" {
 
 err := templates.ExecuteTemplate(w, "index.html", artists)
 if err != nil {
-	http.Error(w, "Failed to render template", http.StatusInternalServerError)
-	return
+	InternalServerErrorHandler(w,r)
 }
 }else{
 	NotFoundHandler(w,r)
-	return
 }
 	// fmt.Printf("Data: %+v\n", ArtistsFull)
 }

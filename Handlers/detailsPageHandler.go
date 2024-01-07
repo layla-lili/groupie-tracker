@@ -1,7 +1,6 @@
 package Handlers
 
 import (
-	"html/template"
 	"net/http"
 	"strconv"
 )
@@ -17,23 +16,23 @@ func DetailspageHandler(w http.ResponseWriter, r *http.Request, artists []FullDa
 		// If no artist is found, return a 404 Not Found response
 		// http.NotFound(w, r)
 		NotFoundHandler(w,r)
-		return
 	}
 	if  id < 1 || id > 52 {
 		// Handle the error
 		// http.NotFound(w, r)
 		BadRequestHandler(w,r)
-		return
 	}
 
 	// Fetch the artist details using the selected ID
 	artist := getArtistDetails(id, artists)
-
-	
-
 	// Render the details.html template with the artist data
-	tmpl := template.Must(template.ParseFiles("templates/details.html"))
-	tmpl.Execute(w, artist)
+	// tmpl := template.Must(template.ParseFiles("templates/details.html"))
+	// tmpl.Execute(w, artist)
+
+error := templates.ExecuteTemplate(w, "details.html", artist)
+if error != nil {
+	InternalServerErrorHandler(w,r)
+}
 
 
 }
