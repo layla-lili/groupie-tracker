@@ -12,16 +12,19 @@ func DetailspageHandler(w http.ResponseWriter, r *http.Request, artists []FullDa
 	idStr := r.FormValue("id")
 	id, err := strconv.Atoi(idStr)
 	
+	if  err == nil && (id < 1 || id > 52) {
+		// Handle the error
+		// http.NotFound(w, r)
+		BadRequestHandler(w,r)
+		return
+	}
 	if err != nil {
 		// If no artist is found, return a 404 Not Found response
 		// http.NotFound(w, r)
 		NotFoundHandler(w,r)
+		return
 	}
-	if  id < 1 || id > 52 {
-		// Handle the error
-		// http.NotFound(w, r)
-		BadRequestHandler(w,r)
-	}
+	
 
 	// Fetch the artist details using the selected ID
 	artist := getArtistDetails(id, artists)

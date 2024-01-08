@@ -1,7 +1,6 @@
 package Handlers
 
 import (
-	//"fmt"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -13,7 +12,7 @@ func init() {
 // Load templates
 var err error
 templates, err = template.ParseFiles(
-	"templates/inde.html",
+	"templates/index.html",
 	"templates/404.html",
 	"templates/400.html",
 	"templates/405.html",
@@ -25,10 +24,7 @@ if err != nil {
 	fmt.Println("Failed to parse templates:", err)
 	os.Exit(1)
 }
-
-
 }
-
 
 func HomePageHandler(w http.ResponseWriter, r *http.Request, artists []FullData) {
 
@@ -40,6 +36,7 @@ if err != nil {
 }
 }else{
 	NotFoundHandler(w,r)
+	return
 }
 	// fmt.Printf("Data: %+v\n", ArtistsFull)
 }
