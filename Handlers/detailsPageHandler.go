@@ -1,13 +1,19 @@
 package Handlers
 
 import (
+	"html/template"
 	"net/http"
 	"strconv"
 )
 
 
-
 func DetailspageHandler(w http.ResponseWriter, r *http.Request, artists []FullData){
+	templates, err = template.ParseFiles(
+		"templates/details.html")
+		if err != nil {
+			InternalServerErrorHandler(w,r)
+			return
+		}
 	// Get the selected ID from the form data
 	idStr := r.FormValue("id")
 	id, err := strconv.Atoi(idStr)
